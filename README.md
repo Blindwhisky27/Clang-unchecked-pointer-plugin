@@ -22,4 +22,6 @@ To compile and run plugin
 cmake --build && clang -fplugin=./CheckMalloc.so filename.c
 ```
 
+# Credits
+Original repo: https://github.com/mahesh-hegde/clang_diag_plugin
 
