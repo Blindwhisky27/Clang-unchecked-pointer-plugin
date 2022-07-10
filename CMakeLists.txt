@@ -1,5 +1,4 @@
-# Copied almost verbatim from https://github.com/llvm/llvm-project/blob/main/clang/examples/PrintFunctionNames/CMakeLists.txt
-
+#Credits https://github.com/mahesh-hegde/clang_diag_plugin
 
 cmake_minimum_required(VERSION 3.7 FATAL_ERROR)
 project(no_underscore VERSION 1.0.0 LANGUAGES CXX)
