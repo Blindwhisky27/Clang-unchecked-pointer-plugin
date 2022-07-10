@@ -71,8 +71,11 @@ public:
 	}
 	virtual bool VisitStmt(Stmt *S)
 	{
-		if (isMallocCalled & !isPtrChecked & std::string(S->getStmtClassName()).compare("BinaryOperator") == 0)
-		{
+		CharSourceRange cha = Lexer::getAsCharRange(S->getSourceRange(), context->getSourceManager(), context->getLangOpts());
+		llvm::StringRef text = Lexer::getSourceText(cha, context->getSourceManager(), context->getLangOpts());
+
+		if (isMallocCalled & !isPtrChecked &
+			text.contains("*"))		{
 			auto loc = context->getFullLoc(S->getBeginLoc());
 			d.Report(loc, warningID) << "Check pointer for NULL before using";
 			isMallocCalled = false;
